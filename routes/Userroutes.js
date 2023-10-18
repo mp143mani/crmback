@@ -1,6 +1,6 @@
-var express = require("express");
-var router = express.Router();
-const { mongoose, usersModel } = require("../dbSchema");
+const express = require("express");
+const router = express.Router();
+const { mongoose, usersModel } = require("../DatabaseSchema");
 const { mongodb, dbName, dbUrl, MongoClient } = require("../Database");
 const {
   hashPassowrd,
@@ -12,7 +12,7 @@ const {
   authenticate,
 } = require("../auth");
 mongoose.connect(dbUrl);
-var nodemailer = require("nodemailer");
+const nodemailer = require("nodemailer");
 const { render } = require("jade");
 const { token } = require("morgan");
 const client = new MongoClient(dbUrl);
@@ -102,7 +102,7 @@ router.post("/reset-password", async (req, res) => {
       res.json({
         message: "sent",
       });
-      var transporter = nodemailer.createTransport({
+      const transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
           user: "1999shubhamjoshi@gmail.com",
@@ -110,7 +110,7 @@ router.post("/reset-password", async (req, res) => {
         },
       });
 
-      var mailOptions = {
+      const mailOptions = {
         from: "1999shubhamjoshi@gmail.com",
         to: user.email,
         subject: "Password Reset",

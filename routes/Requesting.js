@@ -1,6 +1,6 @@
-var express = require("express");
-var router = express.Router();
-const { mongoose, usersModel } = require("../dbSchemaReq");
+const express = require("express");
+const router = express.Router();
+const { mongoose, usersModel } = require("../DatabaseSchema.jsReq");
 const { mongodb, dbName, dbUrl } = require("../Database");
 const { createToken, jwtDecode, validate, roleAdmin } = require("../auth");
 
