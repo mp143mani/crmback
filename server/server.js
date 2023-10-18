@@ -4,40 +4,13 @@
  * Module dependencies.
  */
 
-<<<<<<< HEAD
-var app = require("../app");
-var debug = require("debug")("webcode-crm:server");
-var http = require("http");
-=======
 var app = require('../app');
 var debug = require('debug')('webcode-crm:server');
 var http = require('http');
->>>>>>> 9cdcf3eb1b3659eac5a9b886ca323dacae2e6555
 
 /**
  * Get port from environment and store in Express.
  */
-<<<<<<< HEAD
-
-var port = normalizePort(process.env.PORT || "5000");
-app.set("port", port);
-
-/**
- * Create HTTP server.
- */
-
-var server = http.createServer(app);
-
-/**
- * Listen on provided port, on all network interfaces.
- */
-
-server.listen(port, () => {
-  console.log("Server is listening", port);
-});
-server.on("error", onError);
-server.on("listening", onListening);
-=======
 
 var port = normalizePort(process.env.PORT || '5000');
 app.set('port', port);
@@ -55,7 +28,6 @@ var server = http.createServer(app);
 server.listen(port, ()=>{console.log("Server is listening",port)});
 server.on('error', onError);
 server.on('listening', onListening);
->>>>>>> 9cdcf3eb1b3659eac5a9b886ca323dacae2e6555
 
 /**
  * Normalize a port into a number, string, or false.
@@ -82,22 +54,6 @@ function normalizePort(val) {
  */
 
 function onError(error) {
-<<<<<<< HEAD
-  if (error.syscall !== "listen") {
-    throw error;
-  }
-
-  var bind = typeof port === "string" ? "Pipe " + port : "Port " + port;
-
-  // handle specific listen errors with friendly messages
-  switch (error.code) {
-    case "EACCES":
-      console.error(bind + " requires elevated privileges");
-      process.exit(1);
-      break;
-    case "EADDRINUSE":
-      console.error(bind + " is already in use");
-=======
   if (error.syscall !== 'listen') {
     throw error;
   }
@@ -114,7 +70,6 @@ function onError(error) {
       break;
     case 'EADDRINUSE':
       console.error(bind + ' is already in use');
->>>>>>> 9cdcf3eb1b3659eac5a9b886ca323dacae2e6555
       process.exit(1);
       break;
     default:
@@ -128,14 +83,8 @@ function onError(error) {
 
 function onListening() {
   var addr = server.address();
-<<<<<<< HEAD
-  var bind = typeof addr === "string" ? "pipe " + addr : "port " + addr.port;
-  debug("Listening on " + bind);
-}
-=======
   var bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
 }
->>>>>>> 9cdcf3eb1b3659eac5a9b886ca323dacae2e6555

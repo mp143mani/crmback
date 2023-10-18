@@ -103,13 +103,13 @@ router.post('/reset-password', async(req,res)=>{
     var transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
-          user: "manifun51@gmail.com",
-          pass: "mani1234",
+          user: "1999shubhamjoshi@gmail.com",
+          pass: "kqpbptbxvdetxvpr",
         },
       });
 
       var mailOptions = {
-        from: "manifun51@gmail.com",
+        from: "1999shubhamjoshi@gmail.com",
         to:  user.email,
         subject: "Password Reset",
         text: "That was easy!",
@@ -117,7 +117,7 @@ router.post('/reset-password', async(req,res)=>{
        <h2>Hello ${user.email}</h2>
        <p>We've recieved a request to reset the password for your account associated with your email.
        You can reset your password by clicking the link below</p>
-       <a href=https://backendcrm-66ya.onrender.com/users/update-password/${token}> Reset Password</a>
+       <a href=https://webcode2-render.onrender.com/users/update-password/${token}> Reset Password</a>
        <p><b>Note:</b>The link expires 15 minutes from now</p>
       </div>`,
       };
@@ -243,27 +243,6 @@ console.log(email)
   
       })
 
-<<<<<<< HEAD
-router.put("/edit-Admin/:id", async (req, res) => {
-  try {
-    let user = await usersModel.findOne({
-      _id: mongodb.ObjectId(req.params.id),
-    });
-    console.log(user);
-    if (user) {
-      user.adminName = req.body.adminName;
-      user.email = req.body.email;
-      user.role = req.body.role;
-      await user.save();
-      res.send({ statusCode: 200, message: "User data saved successfully" });
-    } else res.send({ statusCode: 400, message: "User does not exists" });
-  } catch (error) {
-    console.log(error);
-    res.send({ statusCode: 400, message: "Internal Server Error", error });
-  }
-});
-module.exports = router;
-=======
     router.get('/getAdminData',async(req,res)=>{
   
       let users = await usersModel.find()
@@ -310,4 +289,3 @@ module.exports = router;
     }
   })
 module.exports = router;
->>>>>>> 9cdcf3eb1b3659eac5a9b886ca323dacae2e6555
