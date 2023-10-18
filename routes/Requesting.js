@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
-const { mongoose, usersModel } = require("../dbSchemaLeads");
-const { mongodb, dbName, dbUrl } = require("../dbConfig");
+const { mongoose, usersModel } = require("../dbSchemaReq");
+const { mongodb, dbName, dbUrl } = require("../Database");
 const { createToken, jwtDecode, validate, roleAdmin } = require("../auth");
 
 mongoose.connect(dbUrl);
@@ -14,7 +14,7 @@ router.get("/get", async (req, res) => {
   });
 });
 
-router.get("/getLeadLength", async (req, res) => {
+router.get("/getReqLength", async (req, res) => {
   let users = await usersModel.find();
   res.send({
     statusCode: 200,
@@ -22,19 +22,19 @@ router.get("/getLeadLength", async (req, res) => {
   });
 });
 
-router.post("/leadAdd", async (req, res) => {
+router.post("/ReqAdd", async (req, res) => {
   try {
     let user = await usersModel.find({ email: req.body.email });
     if (user.length) {
       res.send({
         statusCode: 400,
-        message: "lead Already Exists",
+        message: "Req Already Exists",
       });
     } else {
       let newUser = await usersModel.create(req.body);
       res.send({
         statusCode: 200,
-        message: "Lead added Successfull",
+        message: "Req added Successfull",
       });
     }
   } catch (error) {
@@ -43,7 +43,7 @@ router.post("/leadAdd", async (req, res) => {
   }
 });
 
-router.delete("/delete-lead/:id", async (req, res) => {
+router.delete("/delete-Req/:id", async (req, res) => {
   try {
     let user = await usersModel.find({ _id: mongodb.ObjectId(req.params.id) });
     if (user.length) {
@@ -58,7 +58,7 @@ router.delete("/delete-lead/:id", async (req, res) => {
   }
 });
 
-router.get("/edit-lead/:id", async (req, res) => {
+router.get("/edit-Req/:id", async (req, res) => {
   try {
     let user = await usersModel.findOne({
       _id: mongodb.ObjectId(req.params.id),
@@ -73,14 +73,14 @@ router.get("/edit-lead/:id", async (req, res) => {
   }
 });
 
-router.put("/edit-lead/:id", async (req, res) => {
+router.put("/edit-Req/:id", async (req, res) => {
   try {
     let user = await usersModel.findOne({
       _id: mongodb.ObjectId(req.params.id),
     });
     console.log(user);
     if (user) {
-      user.leadName = req.body.leadName;
+      user.reqName = req.body.reqName;
       user.company = req.body.company;
       user.email = req.body.email;
       user.mobileNumber = req.body.mobileNumber;
