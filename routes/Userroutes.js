@@ -84,12 +84,12 @@ router.post("/signinAdmin", async (req, res) => {
 });
 
 router.post("/reset-password", async (req, res) => {
-  //verify the email exist and create a JWT and send the pwd reset link to that persons email
+  
   await client.connect();
   try {
     const db = client.db(dbName);
     let user = await db.collection("users").findOne({ email: req.body.email });
-    // console.log(user)
+ 
 
     if (user) {
       console.log(user);
@@ -105,13 +105,13 @@ router.post("/reset-password", async (req, res) => {
       const transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
-          user: "1999shubhamjoshi@gmail.com",
-          pass: "kqpbptbxvdetxvpr",
+          user: "mani143tech@gmail.com",
+          pass: "abcd1234",
         },
       });
 
       const mailOptions = {
-        from: "1999shubhamjoshi@gmail.com",
+        from: "mani143tech@gmail.com",
         to: user.email,
         subject: "Password Reset",
         text: "That was easy!",
@@ -119,7 +119,7 @@ router.post("/reset-password", async (req, res) => {
        <h2>Hello ${user.email}</h2>
        <p>We've recieved a request to reset the password for your account associated with your email.
        You can reset your password by clicking the link below</p>
-       <a href=https://webcode2-render.onrender.com/users/update-password/${token}> Reset Password</a>
+       <a href=https://backendcrm-66ya.onrender.com/users/update-password/${token}> Reset Password</a>
        <p><b>Note:</b>The link expires 15 minutes from now</p>
       </div>`,
       };
